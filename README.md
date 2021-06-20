@@ -14,6 +14,7 @@ GUI介面是使用tkinter來建立，再使用word cloud(文字雲)來視覺化�
 ```shell
 pip3 install -r requirements.txt
 ```
+reference: [requirements.txt](requirement.txt)
 
 ### Execute
 ```shell
