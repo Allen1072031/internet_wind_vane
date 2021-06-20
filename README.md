@@ -21,7 +21,32 @@ python3 internet_wind_vane.py
 ```
 
 ## Detail
-
+### Project Structure
+```
+.
+├── README.md
+├── api
+│   ├── __init__.py
+│   ├── dcard.py
+│   ├── font
+│   │   └── SourceHanSansTW-Regular.otf
+│   ├── news.py
+│   ├── ptt.py
+│   └── res
+│       ├── dict.txt
+│       ├── idf.txt
+│       └── stop.txt
+├── image
+│   └── cloud.png
+├── internet_wind_vane.py
+├── requirements.txt
+├── setup.py
+├── test
+│   ├── cloud.png
+│   ├── test.py
+│   └── window_example.py
+└── window.py 
+```
 
 ## Result
 
