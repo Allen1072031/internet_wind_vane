@@ -14,7 +14,7 @@ GUI介面是使用tkinter來建立，再使用word cloud(文字雲)來視覺化�
 ```shell
 pip3 install -r requirements.txt
 ```
-reference: [requirements.txt](requirements.txt)
+file: [requirements.txt](requirements.txt)
 
 ### Execute
 ```shell
@@ -53,8 +53,9 @@ python3 internet_wind_vane.py
 
 
 ## Reference
-1. [PyPtt][]
-2. 
-
-[PyPtt]: https://github.com/PttCodingMan/PyPtt "PyPtt"
-[jieba]: https://github.com/fxsjy/jieba "jieba"
+1. [PyPtt](https://github.com/PttCodingMan/PyPtt)
+2. [jieba](https://github.com/fxsjy/jieba)
+3. [Dcard API](https://blog.jiatool.com/posts/dcard_api_v2/)
+4. [NEWS API](https://newsapi.org/)
+5. [WordCloud](https://amueller.github.io/word_cloud)
+6. [tkinter document](https://tkdocs.com/)
