@@ -1,5 +1,5 @@
-from forum import home
+import window
 
 if __name__ == '__main__':
-    home.Window().mainloop()
+    window.Window().mainloop()
 
