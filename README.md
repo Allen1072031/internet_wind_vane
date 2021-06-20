@@ -12,7 +12,7 @@ GUI介面是使用tkinter來建立，再使用word cloud(文字雲)來視覺化�
 ## Build Process
 ### Required Packages Installation
 ```shell
-pip3 -r requirement.txt
+pip3 install -r requirements.txt
 ```
 
 ### Execute
