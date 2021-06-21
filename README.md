@@ -56,9 +56,9 @@ python3 internet_wind_vane.py
 ![image]()
 
 ## Reference
-1. [PyPtt](https://github.com/PttCodingMan/PyPtt)
-2. [jieba](https://github.com/fxsjy/jieba)
-3. [Dcard API](https://blog.jiatool.com/posts/dcard_api_v2/)
-4. [NEWS API](https://newsapi.org/)
+1. [Dcard API](https://blog.jiatool.com/posts/dcard_api_v2/)
+2. [PyPtt](https://github.com/PttCodingMan/PyPtt)
+3. [NEWS API](https://newsapi.org/)
+4. [jieba](https://github.com/fxsjy/jieba)
 5. [WordCloud](https://amueller.github.io/word_cloud)
 6. [tkinter document](https://tkdocs.com/)
