@@ -1,32 +1,52 @@
-import requests
-import jieba
-import string
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
+from PyPtt import PTT
+import sys
 
 
 if __name__ == '__main__':
-    text = requests.get("https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100").json()
+    ptt_id = "*"
+    password = "*"
 
-    # for i in text[0].keys():
-    #     print(i)
+    ptt_bot = PTT.API()
+    try:
+        ptt_bot.login(ptt_id, password)
+    except PTT.exceptions.LoginError:
+        ptt_bot.log('登入失敗')
+        sys.exit()
+    except PTT.exceptions.WrongIDorPassword:
+        ptt_bot.log('帳號密碼錯誤')
+        sys.exit()
+    except PTT.exceptions.LoginTooOften:
+        ptt_bot.log('請稍等一下再登入')
+        sys.exit()
+    ptt_bot.log('登入成功')
 
-    words = []
-    for item in text:
-        word_list = jieba.cut(item["title"])
-        for i in word_list:
-            if len(i) >= 2 and i[0] not in string.ascii_letters and i[0] not in string.digits and i[0] not in string.punctuation:
-                words.append(i)
-    print(words)
+    if ptt_bot.unregistered_user:
+        print('未註冊使用者')
+        if ptt_bot.process_picks != 0:
+            print(f'註冊單處理順位 {ptt_bot.process_picks}')
 
-    # for i in range(len(words)):
-    #     words[i] = words[i].encode("big5")
+    if ptt_bot.registered_user:
+        print('已註冊使用者')
 
-    my_wordcloud = WordCloud(background_color='white', font_path="../api/font/SourceHanSansTW-Regular.otf")
-    img = my_wordcloud.generate(" ".join(words))
+    # call ptt_bot other api
+    post_info = ptt_bot.get_post(
+        'Python',
+        post_index=7486)
+    print(post_info.content)
 
-    plt.imshow(my_wordcloud)
-    plt.axis("off")
-    plt.show()
+    test_board_list = [
+        'Wanted',
+        'Gossiping',
+        'Test',
+        'Stock',
+        'movie',
+    ]
 
-    my_wordcloud.to_file("cloud.png")
+    for test_board in test_board_list:
+        index = ptt_bot.get_newest_index(
+            PTT.data_type.index_type.BBS,
+            board=test_board
+        )
+        print(f'{test_board} 最新文章編號 {index}')
+
+    ptt_bot.logout()
