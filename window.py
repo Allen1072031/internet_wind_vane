@@ -147,15 +147,9 @@ class Window(tk.Frame):
 
     def place_wordcloud_thread(self, **kwargs):
         self.genBT["state"] = "disabled"
-        if kwargs["api"] == "dcard":
-            self.newsBT["state"] = "disabled"
-            self.pttBT["state"] = "disabled"
-        elif kwargs["api"] == "news":
-            self.dcardBT["state"] = "disabled"
-            self.pttBT["state"] = "disabled"
-        elif kwargs["api"] == "ptt":
-            self.dcardBT["state"] = "disabled"
-            self.newsBT["state"] = "disabled"
+        self.dcardBT["state"] = "disabled"
+        self.newsBT["state"] = "disabled"
+        self.pttBT["state"] = "disabled"
 
         self.message_bar["text"] = "Loading data..."
         api.gen_wordcloud(api.get_data(**kwargs))
