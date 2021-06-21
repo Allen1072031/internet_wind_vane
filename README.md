@@ -33,24 +33,27 @@ python3 internet_wind_vane.py
 │   │   └── SourceHanSansTW-Regular.otf
 │   ├── news.py
 │   ├── ptt.py
-│   └── res
-│       ├── dict.txt
-│       ├── idf.txt
-│       └── stop.txt
+│   ├── res
+│   │   ├── dict.txt  -> For jieba default dictionary
+│   │   ├── idf.txt   -> For jieba TF-IDF Algorithm
+│   │   ├── stop.txt  -> For jieba stop word (不出現的字詞、符號)
+│   │   └── user.txt  -> For jieba user-defined dictionary
+│   └── variable.py
 ├── image
-│   └── cloud.png
-├── internet_wind_vane.py
+│   └── cloud.png -> word cloud image
+├── internet_wind_vane.py -> main enter
 ├── requirements.txt
-├── setup.py
 ├── test
-│   ├── cloud.png
-│   ├── test.py
-│   └── window_example.py
-└── window.py 
+└── window.py -> GUI
 ```
+### Dcard API
+
+### NEWS API
+
+### PyPtt
 
 ## Result
-
+![image]()
 
 ## Reference
 1. [PyPtt](https://github.com/PttCodingMan/PyPtt)
