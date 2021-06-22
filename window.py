@@ -144,6 +144,7 @@ class Window(tk.Frame):
             self.message_bar["text"] = f"processing {variable.crawl_processing}/{variable.crawl_end}..."
             time.sleep(1)
             time_count += 1
+        self.message_bar["text"] = "Finish"
 
     def place_wordcloud_thread(self, **kwargs):
         self.genBT["state"] = "disabled"
