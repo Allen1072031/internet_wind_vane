@@ -5,7 +5,11 @@
 而在大量的文字中，會有許多重複的語詞，將語助詞(例如，哇、喔)、連結詞(例如，和、還有)去除之後，剩下的名詞、動詞等，大致上可以稱為關鍵字。
 關鍵字出現頻率越高，越有可能是當前的熱門話題。
 
-本程式將會使用API去抓取資料，分別使用PyPTT、Dcard API，以及NEWS API，去抓取在PTT、Dcard，以及台灣新聞的內容。
+Dcard是以大學生為主的匿名討論論壇，除了一般性的討論，還有提供校園看板，讓不同大學有各自獨立的討論，話題也比較貼近校園生活。
+NEWS API提供各國的新聞，能以簡單的方式做篩選，以及取得資料。
+Ptt是台大的BBS，長年下來有許多人在上面討論，對於網路言論有一定的影響力。
+
+本程式將會使用API去抓取資料，分別使用Dcard API、NEWS API，以及PyPTT，去抓取在Dcard、台灣新聞，以及Ptt的內容。
 並且使用jieba處裡中文分詞問題，還有除去非必要的語助詞、連結詞。
 GUI介面是使用tkinter來建立，再使用word cloud(文字雲)來視覺化呈現關鍵詞的熱門度
 
@@ -48,8 +52,9 @@ python3 internet_wind_vane.py
 ```
 
 ### Dcard API
-Dcard API使用GET來request，根據不同的參數可以獲得json的response。
-主要是抓取熱門文章，和看版的文章，並取得title和excerpt的資訊。
+**Dcard API**使用**`GET` request**，根據不同的參數可以獲得**json**的**response**。
+主要是抓取熱門文章，和看版的文章，並取得`title`和`excerpt`的資訊。
+
 #### Example
 ```curl
 # 取得100份全部文章分類的熱門文章
@@ -119,25 +124,71 @@ GET https://www.dcard.tw/service/api/v2/forums/yzu/posts?limit=100
 ]
 ```
 ### NEWS API
+**NEWS API**需要申請API key，有提供**`GET`request**或是**client**套件，這裡使用`GET`來實作。
+資料內容是台灣的頭條新聞，並分析`title`和`description`
 
+#### Example
+```curl
+# 取得100份台灣頭條新聞的熱門文章
+https://newsapi.org/v2/top-headlines?country=tw&apiKey=API_KEY&pageSize=100
+```
+
+```json
+{
+    "status": "ok",
+    "totalResults": 34,
+    "articles": [
+        {
+            "source": 
+            {
+                "id": null,
+                "name": "Yahoo Entertainment"
+            },
+            "author": "作者",
+            "title": "標題",
+            "description": "摘要",
+            "url": "url",
+            "urlToImage": "image_url",
+            "publishedAt": "2021-06-21T23:40:03Z",
+            "content": null
+        },
+        ...
+    ]
+}
+```
 
 ### PyPtt
+**PyPtt**在使用上，需要登入Ptt帳號才可以使用。
+資料分析的是**Gossiping**的最近20篇，推文數75以上的文章及其推文(留言)
+
+#### Analysis Data
+```python
+# 文章內容
+post_info.content
+
+# 推文內容
+for push_info in post_info.push_list: 
+    push_info.content
+```
 
 ### Data Process Pseudo Code
 ```python
-def get_data(data_from, forum)
-  data = request from API
+def get_data(options)
+  data = request API with options
   data = data.convert_json
   
-  words is list
+  words = list
   for item in data:
+    item = filter_data(item)
     words append jieba.process(item)
     
   return words
 ```
 
 ## Result
-![image]()
+1. Dcard API ![image](result/result_dcard_api.jpg)
+2. NEWS API ![image](result/result_news_api.jpg)
+3. PyPTT ![image](result/result_pyptt.jpg)
 
 ## Reference
 1. [Dcard API](https://blog.jiatool.com/posts/dcard_api_v2/)
