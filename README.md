@@ -46,11 +46,95 @@ python3 internet_wind_vane.py
 ├── test
 └── window.py -> GUI
 ```
-### Dcard API
 
+### Dcard API
+Dcard API使用GET來request，根據不同的參數可以獲得json的response。
+主要是抓取熱門文章，和看版的文章，並取得title和excerpt的資訊。
+#### Example
+```curl
+# 取得100份全部文章分類的熱門文章
+GET https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100
+
+# 取得100份元智大學看板的文章
+GET https://www.dcard.tw/service/api/v2/forums/yzu/posts?limit=100
+```
+
+```json
+[
+    {
+        "id":236303953,
+        "title":"標題",
+        "excerpt":"摘要",
+        "anonymousSchool":true,
+        "anonymousDepartment":true,
+        "pinned":false,
+        "forumId":"42851318-b9e2-4a75-8a05-9fe180becefe",
+        "replyId":236300230,
+        "createdAt":"2021-06-21T02:13:40.449Z",
+        "updatedAt":"2021-06-22T01:03:37.740Z",
+        "commentCount":227,
+        "likeCount":7314,
+        "withNickname":false,
+        "tags":["HIDE_THUMBNAIL"],
+        "topics":["*","*","*","*","*"],
+        "meta":{"layout":"classic"},
+        "globalPinned":null,
+        "forumName":"*",
+        "forumAlias":"relationship",
+        "nsfw":false,
+        "gender":"F",
+        "replyTitle":"*",
+        "reacted":null,
+        "liked":false,
+        "subscribed":false,
+        "collected":false,
+        "personaSubscribed":false,
+        "mediaMeta":[],
+        "read":false,
+        "newComment":false,
+        "currentMember":false,
+        "reactions":[
+            {"id":"286f599c-f86a-4932-82f0-f5a06f1eca03","count":7056},
+            {"id":"e8e6bc5d-41b0-4129-b134-97507523d7ff","count":250},
+            {"id":"011ead16-9b83-4729-9fde-c588920c6c2d","count":6},
+            {"id":"4b018f48-e184-445f-adf1-fc8e04ba09b9","count":2},
+            {"id":"514c2569-fd53-4d9d-a415-bf0f88e7329f","count":1}
+        ],
+        "hidden":false,
+        "customStyle":null,
+        "isSuspiciousAccount":false,
+        "isModerator":false,
+        "layout":"classic",
+        "spoilerAlert":false,
+        "totalCommentCount":227,
+        "withImages":false,
+        "withVideos":false,
+        "media":[],
+        "reportReasonText":"",
+        "excerptComments":[],
+        "postAvatar":"",
+        "verifiedBadge":false,
+        "memberType":""
+    }
+]
+```
 ### NEWS API
 
+
 ### PyPtt
+
+### Data Process Pseudo Code
+```python
+def get_data(data_from, forum)
+  data = request from API
+  data = data.convert_json
+  
+  words is list
+  for item in data:
+    words append jieba.process(item)
+    
+  return words
+```
 
 ## Result
 ![image]()
