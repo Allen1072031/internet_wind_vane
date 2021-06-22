@@ -9,7 +9,7 @@ Dcard是以大學生為主的匿名討論論壇，除了一般性的討論，還
 NEWS API提供各國的新聞，能以簡單的方式做篩選，以及取得資料。
 Ptt是台大的BBS，長年下來有許多人在上面討論，對於網路言論有一定的影響力。
 
-本程式將會使用API去抓取資料，分別使用Dcard API、NEWS API，以及PyPTT，去抓取在Dcard、台灣新聞，以及Ptt的內容。
+本程式將會使用API去抓取資料，分別使用[Dcard API](#dcard-api)、[NEWS API](#news-api)，以及[PyPTT](#pyptt)，去抓取在Dcard、台灣新聞，以及Ptt的內容。
 並且使用jieba處裡中文分詞問題，還有除去非必要的語助詞、連結詞。
 GUI介面是使用tkinter來建立，再使用word cloud(文字雲)來視覺化呈現關鍵詞的熱門度
 
