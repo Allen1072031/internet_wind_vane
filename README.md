@@ -61,6 +61,7 @@ python3 internet_wind_vane.py
 主要是抓取熱門文章，和看版的文章，並取得`title`和`excerpt`的資訊。
 
 #### Example
+##### Code Example
 ```curl
 # 取得100份全部文章分類的熱門文章
 GET https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100
@@ -68,7 +69,7 @@ GET https://www.dcard.tw/service/api/v2/posts?popular=true&limit=100
 # 取得100份元智大學看板的文章
 GET https://www.dcard.tw/service/api/v2/forums/yzu/posts?limit=100
 ```
-
+##### Data Example
 ```json
 [
     {
@@ -133,11 +134,12 @@ GET https://www.dcard.tw/service/api/v2/forums/yzu/posts?limit=100
 資料內容是台灣的頭條新聞，並分析`title`和`description`
 
 #### Example
+##### Code Example
 ```curl
 # 取得100份台灣頭條新聞的熱門文章
 https://newsapi.org/v2/top-headlines?country=tw&apiKey=API_KEY&pageSize=100
 ```
-
+##### Data Example
 ```json
 {
     "status": "ok",
@@ -179,13 +181,14 @@ for push_info in post_info.push_list:
 ### Data Process Pseudo Code
 ```python
 def get_data(options)
-  data = request API with options
-  data = data.convert_json
+  data <- request API with options
+  data <- data.convert_json
   
   words = list
   for item in data:
-    item = filter_data(item)
-    words append jieba.process(item)
+    # filter: "article", "content", ...
+    item <- filter_data(item, filter)
+    words appends jieba.process(item)
     
   return words
 ```
