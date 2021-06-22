@@ -27,32 +27,37 @@ python3 internet_wind_vane.py
 
 ## Detail
 ### Project Structure
-```
+<pre>
 .
-├── README.md
-├── api
-│   ├── __init__.py
-│   ├── dcard.py
-│   ├── font
-│   │   └── SourceHanSansTW-Regular.otf
-│   ├── news.py
-│   ├── ptt.py
-│   ├── res
-│   │   ├── dict.txt  -> For jieba default dictionary
-│   │   ├── idf.txt   -> For jieba TF-IDF Algorithm
-│   │   ├── stop.txt  -> For jieba stop word (不出現的字詞、符號)
-│   │   └── user.txt  -> For jieba user-defined dictionary
-│   └── variable.py
-├── image
-│   └── cloud.png -> word cloud image
-├── internet_wind_vane.py -> main enter
-├── requirements.txt
-├── test
-└── window.py -> GUI
-```
+└── internet_wind_vane
+    ├── README.md
+    ├── api
+    │   ├── __init__.py
+    │   ├── dcard.py    -> Dcard API
+    │   ├── news.py     -> NEWS API
+    │   ├── ptt.py      -> PyPTT
+    │   ├── font
+    │   │   └── SourceHanSansTW-Regular.otf -> word cloud image chinese font
+    │   ├── res
+    │   │   ├── dict.txt    -> For jieba default dictionary
+    │   │   ├── idf.txt     -> For jieba TF-IDF Algorithm
+    │   │   ├── stop.txt    -> For jieba stop word (不出現的字詞、符號)
+    │   │   └── user.txt    -> For jieba user-defined dictionary
+    │   └── variable.py
+    ├── image
+    │   └── cloud.png   -> word cloud image
+    ├── internet_wind_vane.py   -> main enter
+    ├── requirements.txt
+    ├── result
+    │   ├── result_dcard_api.jpg
+    │   ├── result_news_api.jpg
+    │   └── result_pyptt.jpg
+    ├── test
+    └── window.py   -> GUI
+</pre>
 
 ### Dcard API
-**Dcard API**使用**`GET` request**，根據不同的參數可以獲得**json**的**response**。
+**Dcard API**使用`GET` **request**，根據不同的參數可以獲得**json**的**response**。
 主要是抓取熱門文章，和看版的文章，並取得`title`和`excerpt`的資訊。
 
 #### Example
@@ -124,7 +129,7 @@ GET https://www.dcard.tw/service/api/v2/forums/yzu/posts?limit=100
 ]
 ```
 ### NEWS API
-**NEWS API**需要申請API key，有提供**`GET`request**或是**client**套件，這裡使用`GET`來實作。
+**NEWS API**需要申請API key，有提供`GET` **request**或是**client**套件，這裡使用`GET`來實作。
 資料內容是台灣的頭條新聞，並分析`title`和`description`
 
 #### Example
@@ -159,7 +164,7 @@ https://newsapi.org/v2/top-headlines?country=tw&apiKey=API_KEY&pageSize=100
 
 ### PyPtt
 **PyPtt**在使用上，需要登入Ptt帳號才可以使用。
-資料分析的是**Gossiping**的最近20篇，推文數75以上的文章及其推文(留言)
+資料分析的是*Gossiping*的最近20篇，推文數75以上的文章及其推文(留言)
 
 #### Analysis Data
 ```python
